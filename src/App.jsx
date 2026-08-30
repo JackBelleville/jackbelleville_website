@@ -204,7 +204,7 @@ function Footer() {
       </p>
       <p className="footer-fine">
         Built with React, deployed on GitHub Pages.{' '}
-        <a href={`${LINKS.github}/jackbelleville.github.io`} target="_blank" rel="noreferrer">
+        <a href="https://github.com/JackBelleville/jackbelleville_website" target="_blank" rel="noreferrer">
           View this site’s source
         </a>
       </p>
