@@ -22,7 +22,7 @@ const PROJECTS = [
   {
     id: 'tonetta-backend',
     name: 'Tonetta Backend',
-    label: 'detected: realtime_audio_api · conf 0.97',
+    label: 'detected: realtime_audio_api · conf 0.96',
     stack: ['FastAPI', 'WebSockets', 'OAuth 2.0', 'Supabase'],
     summary:
       'Production backend for a real-time speech enhancement product. RESTful endpoints with authentication middleware and input validation, plus bidirectional WebSocket pipelines carrying live audio under concurrent load at <10ms processing latency.',
@@ -34,7 +34,7 @@ const PROJECTS = [
   {
     id: 'tonetta-website',
     name: 'Tonetta Website',
-    label: 'detected: product_site · conf 0.96',
+    label: 'detected: product_site · conf 0.97',
     stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Stripe'],
     summary:
       'The product site for Tonetta: marketing pages, user pages, documentation, plus account management with Supabase auth and Stripe subscriptions (team plans, trials, invites) in the original production build.',
@@ -46,7 +46,7 @@ const PROJECTS = [
   {
     id: 'space-ball',
     name: 'Space Ball',
-    label: 'detected: vr_game · conf 0.95',
+    label: 'detected: vr_game · conf 0.99',
     stack: ['C#', 'Unity', 'VR'],
     summary:
       'An immersive VR game built with a three-person team: guide a ball through rhythmic obstacle courses. Core gameplay systems in C#, with the 3D environment optimized to hold stable framerates on heavily hardware-constrained standalone headsets.',

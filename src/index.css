@@ -175,8 +175,8 @@ button:focus-visible {
 }
 
 .hero-name {
-  font-family: var(--font-display);
-  font-weight: 800;
+  font-family: 'Tinos', var(--font-display);
+  font-weight: 700;
   font-size: clamp(2.6rem, 9vw, 4.4rem);
   line-height: 1.04;
   letter-spacing: -0.02em;
