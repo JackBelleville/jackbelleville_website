@@ -3,8 +3,8 @@
   --ink: #191c1f;
   --muted: #626a72;
   --line: #e3e1da;
-  --signal: #0e7a5f;
-  --signal-soft: #eaf3ef;
+  --signal: #1e3a6e;
+  --signal-soft: #eaeff7;
 
   --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
   --font-body: 'IBM Plex Sans', system-ui, sans-serif;
@@ -298,6 +298,10 @@ button:focus-visible {
   text-decoration: underline;
 }
 
+.project-link + .project-link {
+  margin-left: 1.25rem;
+}
+
 /* ---------- experience ---------- */
 
 .exp-list {
@@ -337,8 +341,14 @@ button:focus-visible {
 
 .exp-note {
   margin: 0;
-  color: var(--muted);
   font-size: 0.95rem;
+  max-width: 40rem;
+}
+
+.exp-detail {
+  margin: 0.35rem 0 0;
+  color: var(--muted);
+  font-size: 0.94rem;
   max-width: 40rem;
 }
 

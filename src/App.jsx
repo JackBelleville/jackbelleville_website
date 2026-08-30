@@ -12,11 +12,10 @@ const PROJECTS = [
     label: 'detected: card_scanner · conf 0.98',
     stack: ['Python', 'OpenCV', 'SQLite', 'Scrydex API'],
     summary:
-      'Real-time card identification from a webcam feed. OpenCV perspective correction isolates the card; four perceptual hashing algorithms match it against a SQLite database regardless of orientation, then the Scrydex TCG API returns live market pricing — cached locally to conserve metered credits.',
+      'Real-time card identification from a webcam feed. OpenCV perspective correction isolates the card; four perceptual hashing algorithms match it against a SQLite database regardless of orientation, then the Scrydex TCG API returns live market pricing.',
     detail:
-      'The interesting problem: reprints. Identical artwork appears across sets, so a pure hash match is ambiguous — solving that means ranking by hash distance and disambiguating with set metadata.',
-    href: 'https://github.com/JackBelleville/Pokemon-Card-Scanner',
-    linkText: 'View source',
+      'The interesting problem: Identical artwork appears across sets, so a pure hash match is ambiguous.',
+    links: [{ href: 'https://github.com/JackBelleville/Pokemon-Card-Scanner', text: 'View source' }],
     // Drop a short demo clip at public/demo-scanner.mp4 and set this true.
     hasDemo: false,
   },
@@ -28,9 +27,20 @@ const PROJECTS = [
     summary:
       'Production backend for a real-time speech enhancement product. RESTful endpoints with authentication middleware and input validation, plus bidirectional WebSocket pipelines carrying live audio under concurrent load at <10ms processing latency.',
     detail:
-      'Built as founding engineer — the same system handles identity, subscriptions, and secure access control for real users.',
-    href: 'https://tonetta.ai',
-    linkText: 'Visit tonetta.ai',
+      'Built a system which handles identity, subscriptions, and secure access control for real users.',
+    links: [],
+    hasDemo: false,
+  },
+  {
+    id: 'tonetta-website',
+    name: 'Tonetta Website',
+    label: 'detected: product_site · conf 0.96',
+    stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase', 'Stripe'],
+    summary:
+      'The product site for Tonetta: marketing pages, user pages, documentation, plus account management with Supabase auth and Stripe subscriptions (team plans, trials, invites) in the original production build.',
+    detail:
+      'Preserved as a live archive after the company dispersed, with auth and payment functionality removed.',
+    links: [{ href: 'https://tonetta-website.vercel.app/', text: 'Visit site' }],
     hasDemo: false,
   },
   {
@@ -39,10 +49,12 @@ const PROJECTS = [
     label: 'detected: vr_game · conf 0.95',
     stack: ['C#', 'Unity', 'VR'],
     summary:
-      'An immersive VR game built with a three-person team: guide a ball through rhythmic obstacle courses. Core gameplay systems in C#, with the 3D environment optimized to hold stable framerates on hardware-constrained standalone headsets.',
+      'An immersive VR game built with a three-person team: guide a ball through rhythmic obstacle courses. Core gameplay systems in C#, with the 3D environment optimized to hold stable framerates on heavily hardware-constrained standalone headsets.',
     detail: null,
-    href: null,
-    linkText: null,
+    links: [
+      { href: 'https://github.com/JackBelleville/Tigerhacks2025', text: 'View source' },
+      { href: 'https://devpost.com/software/space-ball-vbnlo5', text: 'View on Devpost' },
+    ],
     hasDemo: false,
   },
 ]
@@ -51,14 +63,16 @@ const EXPERIENCE = [
   {
     org: 'Tonetta.ai',
     role: 'Founding Engineer',
-    period: 'Dec 2025 — Present',
+    period: 'Dec 2025 — May 2026',
     note: 'Audio modification engine from concept to MVP. Auth and subscription infrastructure. Helped close a $27.5K pre-seed round.',
   },
   {
     org: 'MAVI Computer Vision Lab, University of Missouri',
     role: 'Research Fellow',
     period: 'Aug 2025 — Present',
-    note: 'CV methods for pediatric bone underdevelopment and osteoarthritis diagnosis from radiographs. PointNet++ benchmarking on 3D point clouds.',
+    note: 'CV and Image processing methods for pediatric bone underdevelopment and osteoarthritis diagnosis from radiographs. Point cloud benchmarking on 3D point clouds for soybean leaf area index.',
+    detail:
+      'Currently researching: segmenting and tracing individual carbon nanotube layers, benchmarking methods for both images and point clouds against my lab’s CNT-NeRF model.',
   },
   {
     org: 'AfterQuery Experts',
@@ -113,14 +127,11 @@ function Hero() {
         <Reticle label="person · belleville_jack · conf 1.00">Jack Belleville</Reticle>
       </h1>
       <p className="hero-line">
-        Full-stack software engineer building AI-integrated applications — founding engineer at{' '}
-        <a href="https://tonetta.ai" target="_blank" rel="noreferrer">
-          Tonetta.ai
-        </a>
-        , computer vision researcher at Mizzou’s MAVI lab.
+        Full-stack software engineer building AI-integrated applications. Founding engineer at
+        Tonetta.ai and computer vision research fellow at Mizzou’s MAVI lab.
       </p>
       <p className="hero-status">
-        <span className="status-dot" aria-hidden="true" /> Open to Summer 2027 software engineering
+        <span className="status-dot" aria-hidden="true" /> Open to off-season and Summer 2027 software engineering
         internships
       </p>
     </section>
@@ -152,11 +163,17 @@ function ProjectCard({ project }) {
               preload="metadata"
             />
           )}
-          {project.href && (
-            <a className="project-link" href={project.href} target="_blank" rel="noreferrer">
-              {project.linkText} →
+          {project.links.map((link) => (
+            <a
+              key={link.href}
+              className="project-link"
+              href={link.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {link.text} →
             </a>
-          )}
+          ))}
         </div>
       </Reticle>
     </article>
@@ -189,6 +206,7 @@ function Experience() {
             </div>
             <p className="exp-role">{e.role}</p>
             <p className="exp-note">{e.note}</p>
+            {e.detail && <p className="exp-detail">{e.detail}</p>}
           </li>
         ))}
       </ul>
@@ -200,10 +218,10 @@ function Footer() {
   return (
     <footer className="footer">
       <p>
-        Get in touch — <a href={LINKS.email}>bellevillej8127@gmail.com</a>
+        Get in touch <a href={LINKS.email}>bellevillej8127@gmail.com</a>
       </p>
       <p className="footer-fine">
-        Built with React, deployed on GitHub Pages.{' '}
+        Built with React, deployed on Vercel.{' '}
         <a href="https://github.com/JackBelleville/jackbelleville_website" target="_blank" rel="noreferrer">
           View this site’s source
         </a>
