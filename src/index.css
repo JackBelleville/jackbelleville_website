@@ -1,0 +1,387 @@
+:root {
+  --paper: #f7f6f2;
+  --ink: #191c1f;
+  --muted: #626a72;
+  --line: #e3e1da;
+  --signal: #0e7a5f;
+  --signal-soft: #eaf3ef;
+
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --w: 44rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--ink);
+  text-decoration-color: var(--signal);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--signal);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.page {
+  max-width: var(--w);
+  margin: 0 auto;
+  padding: 0 1.25rem 4rem;
+}
+
+/* ---------- top bar ---------- */
+
+.topbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.topbar-token {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.topbar-nav {
+  display: flex;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+}
+
+.topbar-nav a {
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.topbar-nav a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--signal);
+}
+
+/* ---------- reticle (signature element) ---------- */
+
+.reticle {
+  position: relative;
+  display: block;
+}
+
+.reticle-corner {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 0 solid var(--signal);
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.reticle-corner.tl {
+  top: -8px;
+  left: -10px;
+  border-top-width: 1.5px;
+  border-left-width: 1.5px;
+}
+.reticle-corner.tr {
+  top: -8px;
+  right: -10px;
+  border-top-width: 1.5px;
+  border-right-width: 1.5px;
+}
+.reticle-corner.bl {
+  bottom: -8px;
+  left: -10px;
+  border-bottom-width: 1.5px;
+  border-left-width: 1.5px;
+}
+.reticle-corner.br {
+  bottom: -8px;
+  right: -10px;
+  border-bottom-width: 1.5px;
+  border-right-width: 1.5px;
+}
+
+.reticle-label {
+  position: absolute;
+  top: -1.7rem;
+  left: -10px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  color: var(--signal);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+/* hero reticle: always on */
+.hero-name .reticle-corner,
+.hero-name .reticle-label {
+  opacity: 1;
+}
+
+/* project reticles: on hover / keyboard focus within */
+.project:hover .reticle-corner,
+.project:focus-within .reticle-corner,
+.project:hover .reticle-label,
+.project:focus-within .reticle-label {
+  opacity: 1;
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  padding: 4.5rem 0 3.5rem;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 2.4rem;
+}
+
+.hero-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.6rem, 9vw, 4.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.4rem;
+  width: fit-content;
+}
+
+.hero-line {
+  font-size: 1.12rem;
+  max-width: 36rem;
+  margin: 0 0 1.6rem;
+}
+
+.hero-status {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--signal);
+}
+
+/* ---------- sections ---------- */
+
+.section {
+  padding: 2.6rem 0 0.6rem;
+  border-top: 1px solid var(--line);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+  margin: 0 0 1.8rem;
+}
+
+/* ---------- projects ---------- */
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.6rem;
+}
+
+.project .reticle {
+  padding: 0.25rem 0;
+}
+
+.project-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.4rem;
+}
+
+.project-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  margin: 0;
+}
+
+.project-stack {
+  list-style: none;
+  display: flex;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.project-stack li {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--signal);
+  background: var(--signal-soft);
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.project-summary {
+  margin: 0 0 0.6rem;
+  max-width: 40rem;
+}
+
+.project-detail {
+  margin: 0 0 0.6rem;
+  max-width: 40rem;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.project-demo {
+  display: block;
+  width: 100%;
+  max-width: 40rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  margin: 0.4rem 0 0.8rem;
+}
+
+.project-link {
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--signal);
+}
+
+.project-link:hover {
+  text-decoration: underline;
+}
+
+/* ---------- experience ---------- */
+
+.exp-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.7rem;
+}
+
+.exp-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.exp-org {
+  font-weight: 600;
+}
+
+.exp-period {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.exp-role {
+  margin: 0.1rem 0 0.25rem;
+  font-size: 0.95rem;
+  color: var(--signal);
+  font-weight: 500;
+}
+
+.exp-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  max-width: 40rem;
+}
+
+/* ---------- footer ---------- */
+
+.footer {
+  margin-top: 3.2rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--line);
+}
+
+.footer p {
+  margin: 0 0 0.4rem;
+}
+
+.footer-fine {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+/* ---------- responsive & a11y ---------- */
+
+@media (max-width: 540px) {
+  .hero {
+    padding-top: 3rem;
+  }
+  .reticle-label {
+    font-size: 0.6rem;
+    top: -1.4rem;
+  }
+  .project-head {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reticle-corner,
+  .reticle-label {
+    transition: none;
+  }
+}
