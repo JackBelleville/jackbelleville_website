@@ -134,6 +134,7 @@ button:focus-visible {
   top: -1.7rem;
   left: -10px;
   font-family: var(--font-mono);
+  font-weight: 400;
   font-size: 0.68rem;
   letter-spacing: 0.02em;
   color: var(--signal);
@@ -142,9 +143,11 @@ button:focus-visible {
   transition: opacity 200ms ease;
 }
 
-/* hero reticle: always on */
-.hero-name .reticle-corner,
-.hero-name .reticle-label {
+/* hero reticle: on hover / keyboard focus within */
+.hero-name:hover .reticle-corner,
+.hero-name:focus-within .reticle-corner,
+.hero-name:hover .reticle-label,
+.hero-name:focus-within .reticle-label {
   opacity: 1;
 }
 
